@@ -8,7 +8,7 @@ WINDOW_HEIGHT = 720
 VIRTUAL_WIDTH = 512
 VIRTUAL_HEIGHT = 288
 
-BACKGROUND_SCROLL_SPEED = 80
+BACKGROUND_SCROLL_SPEED = 60
 
 function love.load()
 
@@ -46,7 +46,12 @@ function love.keyboard.wasPressed(key)
 end
 
 function love.update(dt)
+	backgroundX = backgroundX - BACKGROUND_SCROLL_SPEED * dt
 
+	if backgroundX <= -1024 + VIRTUAL_WIDTH then
+		backgroundX = 0
+	end
+	
 	gStateMachine:update(dt)
 
 	love.keyboard.keysPressed = {}
