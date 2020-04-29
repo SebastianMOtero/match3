@@ -37,6 +37,10 @@ function StartState:init()
 		end
 	end)
 
+	for i = 1, 64 do
+		table.insert(positions, gFrames['tiles'][math.random(9)][math.random(6)])
+	end
+	
 	self.transitionAlpha = 0
 
 	self.pauseInput = false
@@ -58,8 +62,8 @@ function StartState:update(dt)
 				Timer.tween(1, {
 					[self] = {transitionAlpha = 1}
 				}):finish(function()
-					gStateMachine:change('start', {
-
+					gStateMachine:change('begin-game', {
+						level = 1
 					})
 					self.colorTimer:remove()
 				end)
@@ -74,6 +78,23 @@ function StartState:update(dt)
 end
 
 function StartState:render()
+
+	-- for y = 1, 8 do
+	-- 	for x = 1, 8 do
+	-- 		love.graphics.setColor(0, 0, 0, 1)
+	-- 		love.graphics.draw(gTextures['main'], positions[(y - 1) * x + x], (x - 1) * 32 + 128 + 3, (y - 1) * 32 + 16 + 3)
+			
+	-- 		-- positions[(y - 1) * x + x], (x - 1) * 32 + 128 + 3, (y - 1) * 32 + 16 + 3)
+
+	-- 		love.graphics.setColor(255, 255, 255, 1)
+	-- 		love.graphics.draw(gTextures['main'], positions[(y - 1) * x + x], (x -1) * 32 + 128, (y - 1) * 32 + 16)
+			
+	-- 		-- , (x -1) * 32 + 128, (y - 1) * 32 + 16)
+	-- 	end
+	-- end
+
+	-- love.graphics.setColor(0, 0, 0, 0.5)
+	
 	self:drawTitleText(-60)
 	self:drawMenu(12)
 

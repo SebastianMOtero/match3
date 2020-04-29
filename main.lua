@@ -23,8 +23,14 @@ function love.load()
 		canvas = true
 	})
 
+	gSounds['music']:setLooping(true)
+	gSounds['music']:play()
+
 	gStateMachine = StateMachine {
-		['start'] = function() return StartState() end
+		['start'] = function() return StartState() end,
+		['begin-game'] = function() return BeginGameState() end,
+		['play'] = function() return PlayState() end,
+		['game-over'] = function() return GameOverState() end
 	}
 	gStateMachine:change('start')
 
@@ -61,7 +67,7 @@ function love.draw()
 	push:start()
 
 	love.graphics.draw(gTextures['background'], backgroundX, 0)
-
+	love.graphics.draw(gTextures['earth-side'], 0, 0)
 	gStateMachine:render()
 
 	push:finish()
