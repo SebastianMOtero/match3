@@ -16,7 +16,7 @@ end
 function GameOverState:render()
 	love.graphics.setFont(gFonts['large'])
 
-	love.graphics.setColor(56, 56, 56, 0.9)
+	love.graphics.setColor(56, 56, 56, 0.3)
 	love.graphics.rectangle('fill', VIRTUAL_WIDTH / 2 - 64, 64, 128, 136, 4)
 
 	love.graphics.setColor(99, 155, 255, 0.9)

@@ -11,9 +11,9 @@ function Tile:init(x, y, item)
 end
 
 function Tile:render(x, y)
-	love.graphics.setColor(34, 32, 52, 1)
+	love.graphics.setColor(0.1, 0.1, 0.1, 0.9)
 	love.graphics.draw(gTextures['main'], gFrames['tiles'][self.item][1], self.x + x + 2, self.y + y + 2)
 
-	love.graphics.setColor(255, 255, 255, 1)
+	love.graphics.setColor(1, 1, 1, 1)
 	love.graphics.draw(gTextures['main'], gFrames['tiles'][self.item][1], self.x + x, self.y + y)
 end
